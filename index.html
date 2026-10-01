@@ -3,8 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>Hello, World!</title>
+
+        <style type="text/css">  
+            p {font-size:10pt} 
+            a:link { color: blue; }                    /* a태그의하이퍼링크 */
+            a:visited { color: green; }   /* 방문한 a태그의링크 */     
+            h3:before { content: "◆"; color: blue }               /* h3요소의앞에파란색◆문자삽입 */
+            h3:after { content: " (ⓒsblim)"; font-size:10pt }   /* h3요소의뒤에콘텐츠삽입 */
+        </style>
     </head>
     <body>
         <h1>Hello, World!</h1>
+        <h3><strong>스타일시트</strong> 이해하기</h3> 
+        <p>이예제는 <strong>CSS</strong>의개념을설명합니다.</p>
+        <p>선택자에<a href="http://www.w3c.org">가상클래스</a>와
+            <a href="http://mm.sm.ac.kr">선택자조합</a>을적용하여스타일을지정합니다.
+        </p>
     </body>
 </html>

@@ -1,0 +1,34 @@
+(function(b){window.lcs_do=d;
+function a(f){!function(g,h){h=h||"ntm";
+window["ntm_"+g]=h,window[h]=window[h]||[],window[h].push({"ntm.start":+new Date});
+g=document.getElementsByTagName("script")[0],h=document.createElement("script");
+h.async=!0,h.src=f,g.parentNode.insertBefore(h,g)
+}("b7032129a433","ntm_news")
+}function c(g){try{var h=g||{};
+var f={event:"nLogPageViewService",nLogPageshow:true,nLogPageviewSti:h.sti||"",nLogPageviewGdid:h.gdid||""};
+window.ntm_news.push(f)
+}catch(i){}}function e(f,g){if(!f){return
+}try{window.ntm_news=window.ntm_news||[];
+window.ntm_news.push({event:"nLog2ClickService",nlog:{area_code:f,area_params:g||{}}})
+}catch(h){}}function d(f){try{neloSender.sendInfoToNelo("[ntm/lcsdo] lcsdo 잔여 호출 식별 etc: "+f);
+c({sti:(f&&f.sti)?f.sti:"",gdid:""})
+}catch(g){neloSender.sendErrorToNelo("[ntm/lcsdo] ntm/lcsdo pageview 전송 오류 etc: "+f)
+}}b.ntmInit=a;
+b.ntmCustomPageViewSend=c;
+b.nlog2ClickSend=e;
+b.lcsdoException=d
+})(window);(function(c){window.nclk=a;
+window.g_ssc=window.g_ssc||"Mnews.v2";
+window.nsc=window.g_ssc;
+function a(l,o,h,d,f,k,j){var p=b(l);
+var m=$(p.currentTarget);
+try{var n={event:"nLogClickService",ns_code:window.nsc,click_element:m[0],click_event:l,click_area:o,click_rank:d,click_cid:h};
+if(k){try{n.nlogEvt=JSON.parse(k)
+}catch(l){neloSender.sendErrorToNelo("[nclkWrap] 클릭코드 extra 전송 오류 : "+k)
+}}window.ntm_news.push(n)
+}catch(l){}}function b(f){var d=f;
+if("nodeType" in f&&f.nodeType>=1){d=window.event||f
+}if(f&&f.currentElement&&f.currentElement.__jindo__id){d=window.event
+}return d
+}c.nlogClickSend=a
+})(window);

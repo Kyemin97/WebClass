@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            ol li {list-style-type: lower-alpha;}
+            ol {list-style-position: inside;}
+            ul {list-style-position: outside;}
+            li.kor {list-style-type: square;}
+            li.usa {list-style-type: circle;}
+
+            #book {width: 90%; min-width:600px; border-spacing: 8px; }
+            p {
+                background-color: aqua;
+            }
+            p:hover {
+                background-color: yellow;
+                transition: all 5s;
+            }
+            ul {background-color: brown; }
+            li {background-color: blue; }
+            td {background-color: chartreuse; }
+        </style>
+    </head>
+    <body>
+        <p>순서가 없는 목록</p>
+        <ul>
+            <li class="usa">첫번째</li>
+            <li class="kor">두번째</li>
+            <li class="usa">세번째</li>
+        </ul>
+        <p>순서가 있는 목록</p>
+        <ol>
+            <li>첫번째</li>
+            <li>두번째</li>
+            <li>세번째</li>
+        </ol>
+        <h2 align="center">과목별 추천도서</h2>
+        <table border="1" id="book">
+            <tr>
+                <th>과목</th>
+                <th>책제목</th>
+                <th>저자</th>
+                <th>출판사</th>
+            </tr>
+            <tr>
+                <td rowspan="3">웹프로그래밍</td>
+                <td>HTML5 웹프로그래밍 입문</td>
+                <td>임순범, 박희민</td>
+                <td>생능</td>
+            </tr>
+            <tr>
+                <td>소셜미디어 시대의 인터넷활용</td>
+                <td>최윤철.임순범</td>
+                <td>생능</td>
+            </tr>
+            <tr>
+                <td>What Is HTML5?</td>
+                <td>B. McLaughlin</td>
+                <td>O'Reilly</td>
+            </tr>
+            <tr>
+                <td>합계</td>
+                <td colspan="3">3권</td>
+            </tr>
+        </table>
+    </body>
+</html>

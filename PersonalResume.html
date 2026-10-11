@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 문서 기본 정보 세팅 (Q-HTML 충족) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인 이력서 - Kye</title>
+    <!-- 외부 스타일시트 연결 (Q-CSS 충족) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- [A-06] 스크롤 진행률 표시바 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- [F-01], [F-02] 상단 영역 (header 활용) -->
+    <header>
+        <!-- ① 활동명 (실명 아님) -->
+        <h1>Kye</h1>
+        <!-- ② 소속 표시 -->
+        <p class="affiliation">상명대학교 소프트웨어학과 3학년</p>
+        <!-- ③ 한 줄 소개 (50자 이내) -->
+        <p class="intro">복잡한 비즈니스 로직을 효율적인 API와 아키텍처로 풀어내는 백엔드 개발자입니다.</p>
+        <!-- [F-02] ① GitHub 링크, ③ 다른 연락처는 기재하지 않음 -->
+        <a href="https://github.com/kyemin97" target="_blank" class="github-link">GitHub Profile</a>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main>
+        <!-- [F-03] 실적 목록 (최신순 4건, 중고교 1건 포함, table 활용) -->
+        <section id="experience">
+            <h2>실적 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시기</th>
+                        <th>분류</th>
+                        <th>내용</th>
+                        <th>본인 역할</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2026.10</td>
+                        <td>프로젝트</td>
+                        <td>웹프로그래밍 개인 이력서 제작</td>
+                        <td>프로젝트</td>
+                    </tr>
+                    <tr>
+                        <td>2022.09</td>
+                        <td>자격</td>
+                        <td>SQLD 취득</td>
+                        <td>자격증 취득</td>
+                    </tr>
+                    <tr>
+                        <td>2016.12</td>
+                        <td>자격</td>
+                        <td>네트워크 관리사 2급</td>
+                        <td>자격증 취득</td>
+                    </tr>
+                    <tr>
+                        <!-- 고등학교 시절 실적 1건 이상 포함 -->
+                        <td>2015.03</td>
+                        <td>활동</td>
+                        <td>고등학교 미술 동아리 활동</td>
+                        <td>부원 기초 활동 및 전시회 견학</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- [F-04] 수강 과목 (목록, 전공/교양 구분) -->
+        <section id="courses">
+            <h2>이번 학기 수강 과목 (2026-2)</h2>
+            <ul>
+                <!-- ③ 해당 과목 클릭 시 F-05 영역(id="weekly")으로 이동하는 앵커 링크 -->
+                <li><a href="#weekly">웹프로그래밍 및 AI에이전트 활용</a> (전공)</li>
+                <li>데이터베이스 (전공)</li>
+                <li>알고리즘 (전공)</li>
+                <li>소프트웨어프로젝트 (전공)</li>
+                <li>패션과이미지메이킹 (교양)</li>
+                <li>일본어입문 (교양)</li>
+            </ul>
+        </section>
+
+        <!-- [F-05] 주차별 링크 (id 추가하여 스크롤 앵커 역할 수행) -->
+        <section id="weekly">
+            <h2>웹프로그래밍 주차별 실습</h2>
+            <!-- 자바스크립트가 자동으로 li 태그를 채워넣을 빈 영역 -->
+            <ul class="weeks-list" id="weeksList"></ul>
+        </section>
+
+        <!-- [A-01] 추가 요구사항 (section과 footer 사이 배치) -->
+        <section id="skills">
+            <h2>기술 스택</h2>
+            <ul class="skill-list">
+                <!-- 언어 및 프레임워크 -->
+                <li>Python</li>
+                <li>.NET</li>
+                <li>C</li>
+                <li>Vue.js</li>
+                <li>JavaScript</li>
+                <li>HTML5 / CSS3</li>
+                
+                <!-- 데이터베이스 -->
+                <li>MySQL</li>
+                <li>Ms SQL Server</li>
+                
+                <!-- 아키텍처 및 도구  -->
+                <li>RESTful API</li>
+                <li>Git / GitHub</li>
+                <li>SVN</li>
+                <li>Postman</li>
+                <li>OZ Report</li>
+                <li>UbiForm</li>
+
+            </ul>
+        </section>
+
+        <!-- [A-03] 추가 요구사항: 연락 남기기 폼 -->
+        <section id="contact-form">
+            <h2>메시지 남기기</h2>
+            <!-- action="#"을 두고 자바스크립트로 전송을 가로챌 예정입니다 -->
+            <form id="msgForm" action="#" method="post"> 
+                <p>
+                    <label for="visitor-name">보내시는 분:</label>
+                    <input type="text" id="visitor-name" name="visitor-name" placeholder="이름 또는 소속" required>
+                </p>
+                <p>
+                    <label for="visitor-msg">메시지 내용:</label><br>
+                    <textarea id="visitor-msg" name="visitor-msg" rows="4" cols="50" placeholder="면접 제안이나 문의사항을 남겨주세요." required></textarea>
+                </p>
+                <p>
+                    <button type="submit" class="submit-btn">메시지 전송</button>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <!-- [F-06] 하단(footer) (최종 수정일 표시) -->
+    <footer>
+        <p>최종 수정일: 2026-10-11</p>
+    </footer>
+
+    <!-- [A-02] 위로 가기 버튼 -->
+    <button id="topBtn" title="최상단으로 이동">⬆ Top</button>
+
+    <!-- [A-04] 다크 모드 토글 버튼 -->
+    <button id="themeToggle" title="다크 모드 전환">🌙</button>
+    
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -24,10 +24,19 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // a 태그 요소 생성
             const aTag = document.createElement("a");
-            aTag.href = `doc${docNum}.html`;
             aTag.textContent = `${i}주차`;
             
-            // 추가
+            // 💡 4주차, 5주차 휴강 예외 처리 추가
+            if (i === 4 || i === 5) {
+                aTag.href = "#"; // 임시 링크
+                aTag.addEventListener("click", function(event) {
+                    event.preventDefault(); // 기본 링크 이동 동작 차단
+                    alert(`해당 ${i}주차는 휴강으로 인해 실습 파일이 없습니다.`);
+                });
+            } else {
+                aTag.href = `doc${docNum}.html`; // 정상 주차 링크 연결
+            }
+            
             li.appendChild(aTag);
         } else {
             // 2. 미래의 주차인 경우 (예정 상태 - 링크 없음)

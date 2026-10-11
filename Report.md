@@ -2,7 +2,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 활동명 | Kye |
+| 활동명 | kyemin97 |
 | 배포 URL | https://kyemin97.smu.ai.kr/PersonalResume.html |
 | 작성일 | 2026-10-11 |
 

@@ -3,8 +3,8 @@
 | 항목 | 내용 |
 |---|---|
 | 활동명 | Kye |
-| 배포 URL | https://kyemin97.github.io/Webclass |
-| 작성일 | 2026-10-10 |
+| 배포 URL | https://kyemin97.smu.ai.kr/PersonalResume.html |
+| 작성일 | 2026-10-11 |
 
 ---
 

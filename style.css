@@ -431,8 +431,17 @@ body.dark-mode {
     #topBtn, 
     #themeToggle, 
     #contact-form,
-    .github-link {
+    .github-link,
+    #weekly {            /* 주차별 실습 영역 아예 숨기기 */
         display: none !important;
+    }
+
+    /* 클릭 불가능한 종이 환경에 맞춰 링크를 일반 텍스트처럼 위장 */
+    .cert-link,
+    #courses a {
+        text-decoration: none !important; /* 밑줄 제거 */
+        color: black !important;          /* 파란색 대신 기본 검은색으로 변경 */
+        font-weight: normal !important;   /* 두꺼운 글씨체 해제 (선택) */
     }
 }
 

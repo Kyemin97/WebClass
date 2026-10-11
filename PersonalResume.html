@@ -50,13 +50,13 @@
                     <tr>
                         <td>2022.09</td>
                         <td>자격</td>
-                        <td>SQLD 취득</td>
+                        <td class="cert-link" data-img="images/sqld.png">SQLD 취득</td>
                         <td>자격증 취득</td>
                     </tr>
                     <tr>
                         <td>2016.12</td>
                         <td>자격</td>
-                        <td>네트워크 관리사 2급</td>
+                        <td class="cert-link" data-img="images/network.png">네트워크 관리사 2급</td>
                         <td>자격증 취득</td>
                     </tr>
                     <tr>
@@ -149,6 +149,12 @@
     <!-- [A-04] 다크 모드 토글 버튼 -->
     <button id="themeToggle" title="다크 모드 전환">🌙</button>
     
+    <!-- [A-07] 자격증 증빙 이미지 팝업(모달) 영역 -->
+    <div id="certModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="certImage" alt="증빙 이미지">
+    </div>
+
     <!-- 자바스크립트 파일 연결 -->
     <script src="script.js"></script>
 

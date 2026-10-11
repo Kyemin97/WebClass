@@ -104,4 +104,41 @@ document.addEventListener("DOMContentLoaded", function() {
             themeToggle.textContent = "🌙";
         }
     });
+
+    // ==========================================
+    // [A-07] 자격증 이미지 모달 팝업 로직
+    // ==========================================
+    const modal = document.getElementById("certModal");
+    const modalImg = document.getElementById("certImage");
+    const closeModalBtn = document.querySelector(".close-modal");
+
+    // 'cert-link' 클래스를 가진 모든 요소 찾기
+    const certLinks = document.querySelectorAll(".cert-link");
+
+    certLinks.forEach(link => {
+        link.addEventListener("click", function() {
+            // HTML에 적어둔 data-img 경로를 가져와서 모달 이미지 src에 넣기
+            const imgSrc = this.getAttribute("data-img");
+            modalImg.src = imgSrc;
+            
+            // 모달 창 띄우기 (flex로 설정하여 가운데 정렬 유지)
+            modal.style.display = "flex";
+        });
+    });
+
+    // 1. X 버튼 클릭 시 모달 닫기
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            modalImg.src = ""; // 이미지 비워주기
+        });
+    }
+
+    // 2. 모달 바깥의 어두운 배경 클릭 시 모달 닫기
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+            modalImg.src = "";
+        }
+    });
 });

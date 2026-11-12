@@ -1,24 +1,107 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>웹프로그래밍 실습 페이지</title>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#161514">
+    <title>달빛 카페 메뉴판</title>
+    <meta name="description" content="스페셜티 필터 커피와 말차·흑임자 시그니처가 있는 달빛 카페. QR로 메뉴를 보고 주문하세요.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menu.css?v=3">
+</head>
+<body>
+    <header class="hero">
+        <div class="pendant" aria-hidden="true">
+            <span class="pendant-cord"></span>
+            <span class="pendant-lamp"></span>
+        </div>
+        <h1 class="logo">달빛 카페</h1>
+        <p class="logo-en">Moonlight Cafe</p>
+        <p class="tagline">산지가 다른 필터 커피, 그리고 말차와 흑임자</p>
+        <p id="table-label" class="table-label"></p>
+        <div class="floor" aria-hidden="true"></div>
+    </header>
 
-        <style type="text/css">  
-            p {font-size:10pt} 
-            a:link { color: blue; }                            /* a태그의하이퍼링크 */
-            a:visited { color: green; }                        /* 방문한 a태그의링크 */     
-            h3:before { content: "◆"; color: blue }           /* h3요소의앞에파란색◆문자삽입 */
-            h3:after { content: " (ⓒsblim)"; font-size:10pt }   /* h3요소의뒤에콘텐츠삽입 */
-            /* color: inherit; text-decoration: none; */    /* a태그의링크색상상속, 밑줄없음 */
-        </style>
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-        <h3><strong>스타일시트</strong> 이해하기</h3> 
-        <p>이예제는 <strong>CSS</strong>의개념을설명합니다.</p>
-        <p>선택자에<a href="http://www.w3c.org">가상클래스</a>와
-            <a href="http://mm.sm.ac.kr">선택자조합</a>을적용하여스타일을지정합니다.
-        </p>
-    </body>
+    <nav class="tabs" aria-label="메뉴 카테고리">
+        <div class="tabs-inner" role="tablist">
+            <button class="tab is-active" role="tab" aria-selected="true" data-category="all">전체</button>
+            <button class="tab" role="tab" aria-selected="false" data-category="filter">필터</button>
+            <button class="tab" role="tab" aria-selected="false" data-category="coffee">커피</button>
+            <button class="tab" role="tab" aria-selected="false" data-category="signature">시그니처</button>
+            <button class="tab" role="tab" aria-selected="false" data-category="tea">논커피/티</button>
+            <button class="tab" role="tab" aria-selected="false" data-category="dessert">디저트</button>
+        </div>
+    </nav>
+
+    <main id="menu-list" class="menu" aria-live="polite"></main>
+
+    <button id="cart-bar" class="cart-bar" type="button" hidden>
+        <span class="cart-bar-label"><span id="cart-bar-count" class="cart-bar-count">0</span>주문 내역 보기</span>
+        <span id="cart-bar-total" class="cart-bar-total"></span>
+    </button>
+
+    <!-- 메뉴 상세 · 옵션 선택 시트 -->
+    <dialog id="item-modal" class="sheet" aria-labelledby="item-name">
+        <button class="sheet-close" type="button" data-close aria-label="닫기">&times;</button>
+        <img id="item-image" class="sheet-image" src="" alt="">
+        <div class="sheet-body">
+            <p id="item-category" class="sheet-category"></p>
+            <h2 id="item-name" class="sheet-name"></h2>
+            <p id="item-en" class="sheet-en"></p>
+            <p id="item-price" class="sheet-price"></p>
+            <p id="item-desc" class="sheet-desc"></p>
+            <dl id="item-spec" class="spec"></dl>
+            <div id="item-options"></div>
+            <div class="buy-row">
+                <div class="qty">
+                    <button id="qty-minus" type="button" aria-label="하나 빼기">&minus;</button>
+                    <span id="item-qty">1</span>
+                    <button id="qty-plus" type="button" aria-label="하나 더하기">+</button>
+                </div>
+                <button id="add-btn" class="primary-btn" type="button">담기</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 주문 내역 시트 -->
+    <dialog id="cart-modal" class="sheet" aria-labelledby="cart-title">
+        <button class="sheet-close" type="button" data-close aria-label="닫기">&times;</button>
+
+        <div id="order-view" class="sheet-body">
+            <h2 id="cart-title" class="sheet-name">주문 내역</h2>
+            <ul id="cart-lines" class="cart-lines"></ul>
+
+            <p class="cart-sum"><span>합계</span><strong id="cart-total"></strong></p>
+
+            <label class="field">
+                <span>테이블 번호</span>
+                <input id="table-input" type="number" inputmode="numeric" min="1" max="99" placeholder="예: 7">
+            </label>
+            <p id="table-error" class="error" hidden>테이블 번호를 1~99 사이로 입력해 주세요.</p>
+
+            <button id="order-btn" class="primary-btn" type="button">주문하기</button>
+            <p class="notice">수업 실습용 페이지입니다. 주문은 실제로 전송되지 않습니다.</p>
+        </div>
+
+        <div id="done-view" class="sheet-body done" hidden>
+            <p class="sheet-category">주문이 접수되었습니다</p>
+            <h2 id="done-number" class="done-number"></h2>
+            <p id="done-table" class="sheet-en"></p>
+            <ul id="done-lines" class="done-lines"></ul>
+            <p class="cart-sum"><span>합계</span><strong id="done-total"></strong></p>
+            <p class="notice">실습용 화면이므로 실제 주문은 전송되지 않았습니다.</p>
+            <button id="done-close" class="primary-btn" type="button">확인</button>
+        </div>
+    </dialog>
+
+    <footer class="site-footer">
+        <p class="footer-name">달빛 카페 <span>Moonlight Cafe</span></p>
+        <p>Open 11:00 &ndash; 21:00 &middot; 월요일 휴무</p>
+        <p class="credit">수업 실습용 가상 메뉴판 &middot; 메뉴 사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+    </footer>
+
+    <script src="menu.js?v=5"></script>
+</body>
 </html>
